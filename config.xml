@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+	<widget xmlns		= "http://www.w3.org/ns/widgets"
+			xmlns:gap	= "http://phonegap.com/ns/1.0"
+			id			= "mx.italiana.HojaCarga"
+			versionCode	= "1"
+			version		= "1.0.0" >
+		<name>
+			ItaMarcarUnidadesV1
+		</name>
+		<description>
+			Grupo Industrial La Italiana
+		</description>
+		<author href="www.laitaliana.com.mx" email="luis_martinez@laitaliana.com.mx">
+			Pinky
+		</author>
+		<preference name="phonegap-version" value="3.7.0" />
+		  
+        <icon src="icon.png" />
+		
+
+		<preference name="orientation" value="portrait"></preference>		
+		<gap:plugin name="org.apache.cordova.dialogs"></gap:plugin>
+		<gap:plugin name="org.apache.cordova.vibration"></gap:plugin>
+		<gap:plugin name="org.apache.cordova.device"></gap:plugin>
+		<gap:plugin name="com.phonegap.plugins.barcodescanner"></gap:plugin>
+		<gap:plugin name="org.apache.cordova.network-information" />
+		
+	</widget>
