@@ -7,6 +7,8 @@ var fn = {
         //window.location.href = '#login';
 		// LOGIO EN EL SERVIDOR --> $('#btnautentificar').tap(fn.autentificar);
         $('#btnautentificar').tap(fn.autentificarJSON);
+        $('#CerrarSesion').tap(fn.cerrarsesion);
+        
  
 	},
     autentificarJSON : function() {         

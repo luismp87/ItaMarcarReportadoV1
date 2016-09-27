@@ -6,7 +6,13 @@ table > tbody tr td{
   font-family: fantasy;    
 }
 
-#imagenita{
+#imagenita , .Cconsulta{
 text-align: center;
-
 }
+
+.centrado{
+  margin-left: auto;
+  margin-right: auto;
+  width: 120px;
+}
+
