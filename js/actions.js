@@ -8,6 +8,7 @@ var fn = {
 		// LOGIO EN EL SERVIDOR --> $('#btnautentificar').tap(fn.autentificar);
         $('#btnautentificar').tap(fn.autentificarJSON);
         $('#CerrarSesion').tap(fn.cerrarsesion);
+        $('#ConsultarCUBO').tap(fn.ConsultarCUBO);
         
  
 	},
@@ -43,13 +44,46 @@ var fn = {
         else
             return true;
     },
-        cerrarsesion: function(){
-        window.localStorage.setItem("user",'');   
-         $("#txtusuario").val("");
-         $("#txtcontrasena").val("");
-        window.location.href = '#login';
-
+    cerrarsesion: function(){
+    window.localStorage.setItem("user",'');   
+    $("#txtusuario").val("");
+    $("#txtcontrasena").val("");
+window.location.href = '#login';
+    },
+    ConsultarCUBO: function(){         
+        var cubo = $('#txtcubo').val();       
+        if(cubo != ''){   
+            $.mobile.loading("show",{theme: 'b'});
+            $.ajax({
+                method: 'POST',
+                url: 'http://http://servidoriis.laitaliana.com.mx/LM/wsitamarcarunidades/Service1.asmx/MuestraInfoCubo',              
+                data: {cubo: cubo},
+                dataType: "json",
+                success: function (msg){
+                    $.mobile.loading("hide");
+                    $.each(msg,function(i,item){
+                        if(msg[i].Respuesta == "encontro")
+                            {                           
+                            window.location.href = '#MuestraInfoCubo';
+                            }
+                        else if(msg[i].valor1 == "noencontro")
+                            {
+                            navigator.notification.alert("No se encontro información.",null,"Error al Ingresar","Aceptar");   
+                            //alert("Usuario o contraseña incorrectos");
+                            }                        
+                    });                 
+                },
+                error: function(jq, txt){
+                    //alert(jq + txt.responseText);
+                    navigator.notification.alert(jq + txt.responseText,null,"Error al Ingresar","Aceptar");
+                }
+            });
         }
+        else{
+            navigator.notification.alert("Todos Los Campos Son Requeridos",null,"Error al Ingresar","Aceptar");
+            //alert("todos los campos son requeridos");
+        }   
+    }
 };
-//$(fn.init);
-$(fn.ready);
+$(fn.init);
+//$(fn.ready);
