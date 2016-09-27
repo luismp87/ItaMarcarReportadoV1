@@ -3,8 +3,10 @@ var fn = {
 		document.addEventListener("deviceready",fn.init,false);
 	},
 	init: function(){
-        //if(!fn.estaRegistrado())
-        //window.location.href = '#login';
+        if(fn.estaRegistrado() == false)
+        {
+        window.location.href = '#login';
+        }
 		// LOGIO EN EL SERVIDOR --> $('#btnautentificar').tap(fn.autentificar);
         $('#btnautentificar').tap(fn.autentificarJSON);
         $('#CerrarSesion').tap(fn.cerrarsesion);
