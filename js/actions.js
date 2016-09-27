@@ -68,22 +68,22 @@ window.location.href = '#login';
                             }
                         else if(msg[i].valor1 == "noencontro")
                             {
-                            navigator.notification.alert("No se encontro información.",null,"Error al Ingresar","Aceptar");   
+                            navigator.notification.alert("No se encontro información.",null,"Error al consultar CUBO","Aceptar");   
                             //alert("Usuario o contraseña incorrectos");
                             }                        
                     });                 
                 },
                 error: function(jq, txt){
                     //alert(jq + txt.responseText);
-                    navigator.notification.alert(jq + txt.responseText,null,"Error al Ingresar","Aceptar");
+                    navigator.notification.alert(jq + txt.responseText,null,"Error al consultar CUBO","Aceptar");
                 }
             });
         }
         else{
-            navigator.notification.alert("Todos Los Campos Son Requeridos",null,"Error al Ingresar","Aceptar");
+            navigator.notification.alert("El CUBO es Requeridos",null,"Error al consultar CUBO","Aceptar");
             //alert("todos los campos son requeridos");
         }   
     }
 };
-$(fn.init);
-//$(fn.ready);
+//$(fn.init);
+$(fn.ready);
