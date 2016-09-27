@@ -56,7 +56,7 @@ window.location.href = '#login';
             $.mobile.loading("show",{theme: 'b'});
             $.ajax({
                 method: 'POST',
-                url: 'http://http://servidoriis.laitaliana.com.mx/LM/wsitamarcarunidades/Service1.asmx/MuestraInfoCubo',              
+                url: 'http://servidoriis.laitaliana.com.mx/LM/wsitamarcarunidades/Service1.asmx/MuestraInfoCubo',              
                 data: {cubo: cubo},
                 dataType: "json",
                 success: function (msg){
