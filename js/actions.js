@@ -82,13 +82,13 @@ window.location.href = '#login';
                             {                           
                             window.location.href = '#MuestraInfoCubo';
                             $("#hFOLIOCUBO").text($('#txtcubo').val());
-                            //$("#hORIGENUSUARIO").text();
+                            $("#hORIGENUSUARIO").textwindow.localStorage.getItem("origen"));
                             $("#hNPROVEEDOR").text(msg[i].vendor_name);
                             $("#hPLACA").text(msg[i].tm_vehicle_id);
                             $("#hDESCRIPCIONCUBO").text(msg[i].description);
 
                             }
-                        else if(msg[i].valor1 == "noencontro")
+                        else if(msg[i].Respuesta == "noencontro")
                             {
                             navigator.notification.alert("No se encontro información.",null,"Error al consultar CUBO","Aceptar");   
                             //alert("Usuario o contraseña incorrectos");
@@ -163,5 +163,5 @@ window.location.href = '#login';
         }   
     }
 };
-//$(fn.init);
-$(fn.ready);
+$(fn.init);
+//$(fn.ready);
