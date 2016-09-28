@@ -80,8 +80,12 @@ var almacen = {
 										
 									tx.executeSql("SELECT usuario,pass,origen FROM usuarios where upper(usuario) = upper('" +$('#txtusuario').val()+ "') and upper(pass) = upper('" +$('#txtcontrasena').val()+ "')", [], function(tx2, t){
 									var encontroUsuario = 0;
+									var usuariof = "";
+									var origenf = "";
 											for(i = 0; i < t.rows.length; i++){
 							encontroUsuario= 1;
+							usuariof = t.rows.item(i).usuario;
+							origenf = t.rows.item(i).origen;
 							/*$("#pPLANTA").text(t.rows.item(i).planta);
 							$("#pUBICACION").text(t.rows.item(i).ubicacion);
                             $("#pCAPACIDAD").text(t.rows.item(i).capacidad);
@@ -111,6 +115,8 @@ var almacen = {
 	}
 	else if(encontroUsuario >= 1)
 	{
+		window.localStorage.setItem("user",usuariof);
+		window.localStorage.setItem("origen",origenf);
  		window.location.href = '#IngresoCubo';
 	}
 //navigator.notification.alert("almacen.numerodefilas: " + almacen.numerodefilas, null, "Correcto", "Aceptar");

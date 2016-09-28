@@ -46,9 +46,13 @@ var fn = {
      estaRegistrado: function(){
         var usr = window.localStorage.getItem("user");
         if(usr == undefined || usr == '')
+        {
             return false;
+        }
         else
+        {
             return true;
+        }
     },
     cerrarsesion: function(){
     window.localStorage.setItem("user",'');   

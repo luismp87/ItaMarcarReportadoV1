@@ -8,35 +8,6 @@
         <link rel="stylesheet" type="text/css" href="css/estilos.css">
 </head>
 <body>
-<div data-role="page" id="login">
-<div data-role="header"><h2>ItaMarcarReportadoV1</h2></div> 
-<div data-role="main" class="ui-content">
-<div id="imagenita">
-	<img src="Imagenes\01.jpg" width=70px>
-</div>
-<h3>Autentificación:</h3>
-                                <table>
-                                <tr>
-                                    <td>Usuario:</td>
-                                    <td><input type="text" class="entrada_texto" id="txtusuario" placeholder="Nombre Usuario" value="s"></td>
-                                </tr>
-                                <tr>
-                                    <td>Contraseña:</td>
-                                    <td><input type="password" class="entrada_texto" id="txtcontrasena" placeholder="Constraseña" value="s"></td>
-                                </tr>
-                                 <tr>       
-                                    <td colspan="2"><input type="submit" value="Autentificar" id="btnautentificar"></td>
-                                </tr>                                
-                                </table>
-   </div>
- <div data-role="footer" data-position="fixed">
-                            <div data-role="navbar">
-                                <ul>
-                                    <li><a class="ui-btn ui-icon-grid ui-btn-icon-top" href="#MenuCatalogos">Actualizar Catálogos</a></li>                                    
-                                </ul>
-                            </div>
-                       </div>
-</div>
 <div data-roel="page" id="IngresoCubo">
     <div data-role="header"><h2>ItaMarcarReportadoV1</h2></div>
     <div data-role="main" class="ui-content">
@@ -66,6 +37,53 @@
                             </div><!-- /navbar -->
                        </div>
 </div>
+<div data-role="page" id="login">
+<div data-role="header"><h2>ItaMarcarReportadoV1</h2></div> 
+<div data-role="main" class="ui-content">
+<div id="imagenita">
+	<img src="Imagenes\01.jpg" width=70px>
+</div>
+<h3>Autentificación:</h3>
+                                <table>
+                                <tr>
+                                    <td>Usuario:</td>
+                                    <td><input type="text" class="entrada_texto" id="txtusuario" placeholder="Nombre Usuario" value="s"></td>
+                                </tr>
+                                <tr>
+                                    <td>Contraseña:</td>
+                                    <td><input type="password" class="entrada_texto" id="txtcontrasena" placeholder="Constraseña" value="s"></td>
+                                </tr>
+                                 <tr>       
+                                    <td colspan="2"><input type="submit" value="Autentificar" id="btnautentificar"></td>
+                                </tr>                                
+                                </table>
+   </div>
+ <div data-role="footer" data-position="fixed">
+                            <div data-role="navbar">
+                                <ul>
+                                    <li><a class="ui-btn ui-icon-grid ui-btn-icon-top" href="#MenuCatalogos">Actualizar Catálogos</a></li>                                    
+                                </ul>
+                            </div>
+                       </div>
+</div>
+<div data-role="page" id="MenuCatalogos">
+<div data-role="header"><h2>ItaMarcarReportadoV1</h2></div>
+<div data-role="main" class="ui-content">
+    <div id="imagenita">
+    <img src="Imagenes\01.jpg" width=70px>
+    </div>
+
+<div>
+    <ul  data-role="listview" data-inset="true">
+      <li>
+        <a href="#" id="ConsultaNumUsuarios"><img src="Imagenes\users.png">Actualizar Catálogo de Usuarios</a>
+      </li>
+     
+    </ul>
+</div>
+</div>
+</div>
+
 <div data-role="page" id="MuestraInfoCubo">
     <div data-role="header"><h2>ItaMarcarReportadoV1</h2></div>
     <div data-role="main" class="ui-content">
@@ -81,22 +99,7 @@
 
     </div>
 </div>
-<div data-role="page" id="MenuCatalogos">
-<div data-role="header"><h2>ItaMarcarReportadoV1</h2></div>
-<div data-role="main" class="ui-content">
-    <div id="imagenita">
-    <img src="Imagenes\01.jpg" width=70px>
-    </div>
 
-    <ul data-role="listview" data-inset="true">
-      <li>
-        <a href="#" id="ConsultaNumUsuarios"><img src="Imagenes\users.png">Actualizar Catálogo de Usuarios</a>
-      </li>
-     
-    </ul>
-
-</div>
-</div>
 <div data-role="page" id="RemotaALocal">
                  <div data-role="header"><h1>ItaMarcarReportadoV1</h1></div>
                  <div data-role="main" class="ui-content">
