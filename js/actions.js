@@ -82,7 +82,7 @@ window.location.href = '#login';
                             {                           
                             window.location.href = '#MuestraInfoCubo';
                             $("#hFOLIOCUBO").text($('#txtcubo').val());
-                            $("#hORIGENUSUARIO").textwindow.localStorage.getItem("origen"));
+                            $("#hORIGENUSUARIO").text(window.localStorage.getItem("origen"));
                             $("#hNPROVEEDOR").text(msg[i].vendor_name);
                             $("#hPLACA").text(msg[i].tm_vehicle_id);
                             $("#hDESCRIPCIONCUBO").text(msg[i].description);
@@ -163,5 +163,5 @@ window.location.href = '#login';
         }   
     }
 };
-//$(fn.init);
-$(fn.ready);
+$(fn.init);
+//$(fn.ready);
