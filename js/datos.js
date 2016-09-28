@@ -10,5 +10,5 @@ var usuarios = [
 {"usuario": "varcos",		"pass": "varcos",		"origen": "Arcos"},
 {"usuario": "virapuato",	"pass": "virapuato",		"origen": "Irapuato"},
 {"usuario": "vsalamanca",	"pass": "vsalamanca",		"origen": "Salamanca"},
-{"usuario": "s",			"pass": "s"}
+{"usuario": "s",			"pass": "s",		"origen": "Sistemas"}
 ];

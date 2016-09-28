@@ -133,7 +133,7 @@ window.location.href = '#login';
                     {
                        navigator.notification.alert("Se tienen registros en la base de datos, antes eliminelos",null,"Advertencia","Aceptar");    
                     }
-        }
+        },
     btnEliminarUsuarios: function(){        
             almacen.eliminarUsuarios();
             almacen.leerNumeroUsuarios();  
