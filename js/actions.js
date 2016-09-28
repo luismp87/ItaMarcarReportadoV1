@@ -3,10 +3,10 @@ var fn = {
 		document.addEventListener("deviceready",fn.init,false);
 	},
 	init: function(){
-        navigator.notification.alert(!fn.estaRegistrado() + " " + window.localStorage.getItem("user"),null,"x","Aceptar"); 
-        if(!fn.estaRegistrado() == true)
+        navigator.notification.alert(fn.estaRegistrado() + " " + window.localStorage.getItem("user"),null,"x","Aceptar"); 
+        if(fn.estaRegistrado() == false)
         {
-        window.location.href = '#login';        
+        window.location.href = '#login';      
         }
 		// LOGIO EN EL SERVIDOR --> $('#btnautentificar').tap(fn.autentificar);
         //$('#btnautentificar').tap(fn.autentificarJSON);
