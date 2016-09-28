@@ -4,7 +4,7 @@ var fn = {
 	},
 	init: function(){
         navigator.notification.alert(!fn.estaRegistrado() + " " + window.localStorage.getItem("user"),null,"x","Aceptar"); 
-        if(fn.estaRegistrado() == false)
+        if(!fn.estaRegistrado() == true)
         {
         window.location.href = '#login';        
         }
@@ -48,7 +48,7 @@ var fn = {
     },
      estaRegistrado: function(){
         var usr = window.localStorage.getItem("user");
-        if(usr == undefined || usr == '')
+        if(usr == undefined || usr == '' || usr == null)
         {
             return false;
         }
