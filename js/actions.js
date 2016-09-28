@@ -163,5 +163,5 @@ window.location.href = '#login';
         }   
     }
 };
-$(fn.init);
-//$(fn.ready);
+//$(fn.init);
+$(fn.ready);
