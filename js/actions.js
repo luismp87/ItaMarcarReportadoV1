@@ -3,8 +3,11 @@ var fn = {
 		document.addEventListener("deviceready",fn.init,false);
 	},
 	init: function(){
+        navigator.notification.alert(!fn.estaRegistrado(),null,"x","Aceptar"); 
         if(!fn.estaRegistrado())
+        {
         window.location.href = '#login';        
+        }
 		// LOGIO EN EL SERVIDOR --> $('#btnautentificar').tap(fn.autentificar);
         //$('#btnautentificar').tap(fn.autentificarJSON);
         $('#btnautentificar').tap(fn.autentificarSQL);
