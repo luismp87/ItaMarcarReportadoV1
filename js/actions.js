@@ -8,6 +8,10 @@ var fn = {
         {
         window.location.href = '#login';      
         }
+        else
+        {
+        window.location.href = '#IngresoCubo';     
+        }
 		// LOGIO EN EL SERVIDOR --> $('#btnautentificar').tap(fn.autentificar);
         //$('#btnautentificar').tap(fn.autentificarJSON);
         $('#btnautentificar').tap(fn.autentificarSQL);
