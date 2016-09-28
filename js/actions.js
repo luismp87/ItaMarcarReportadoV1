@@ -11,6 +11,9 @@ var fn = {
         $('#btnautentificar').tap(fn.autentificarJSON);
         $('#CerrarSesion').tap(fn.cerrarsesion);
         $('#ConsultarCUBO').tap(fn.ConsultarCUBO);
+        $('#ConsultaNumUsuarios').tap(fn.ConsultaNumUsuarios);
+        $('#btnMigrarUsuarios').tap(fn.btnMigrarUsuarios);
+        $('#btnEliminarUsuarios').tap(fn.btnEliminarUsuarios);
         
  
 	},
@@ -24,6 +27,8 @@ var fn = {
     for(i = 0; i<usuarios.length; i++) {
         if(( usuarios[i].usuario == usuariof) && (usuarios[i].pass == passf)){
         window.localStorage.setItem("user",usuariof);
+            
+
         //alert(""+usuariof);
         window.location.href = '#IngresoCubo';
         encontrado = "true";
@@ -67,6 +72,12 @@ window.location.href = '#login';
                         if(msg[i].Respuesta == "encontro")
                             {                           
                             window.location.href = '#MuestraInfoCubo';
+                            $("#hFOLIOCUBO").text($('#txtcubo').val());
+                            //$("#hORIGENUSUARIO").text();
+                            $("#hNPROVEEDOR").text(msg[i].vendor_name);
+                            $("#hPLACA").text(msg[i].tm_vehicle_id);
+                            $("#hDESCRIPCIONCUBO").text(msg[i].description);
+
                             }
                         else if(msg[i].valor1 == "noencontro")
                             {
@@ -85,6 +96,56 @@ window.location.href = '#login';
             navigator.notification.alert("El CUBO es Requeridos",null,"Error al consultar CUBO","Aceptar");
             //alert("todos los campos son requeridos");
         }   
+    },
+    ConsultaNumUsuarios: function(){
+         if(window.localStorage.getItem("user") == "s")
+        {
+        almacen.leerNumeroUsuarios();  
+        window.location.href = '#RemotaALocal';
+        }
+        else
+        {
+        navigator.notification.alert("Su usuario no esta autorizado para ingresar a esta opción",null,"Advertencia","Aceptar");    
+        window.location.href = '#login';
+        }
+    },
+    btnMigrarUsuarios: function(){ 
+        var myArray = new Array(30); 
+        var registros = $('#NumUsuarios').val();  
+        if(registros == 0)
+            {
+                $.mobile.loading("show",{theme: 'b'});
+                $.ajax({
+                method: 'POST',
+                url: 'http://servidoriis.laitaliana.com.mx/LM/wsitamarcarunidades/Service1.asmx/enviarcatalogocompletodeusuarios',              
+                //data: {usuario: nom, contrasena: passw},
+                dataType: "json",
+                success: function (msg){
+                    $.mobile.loading("hide");
+                    $.each(msg,function(i,item){
+                        myArray[i] = msg[i].usuario + "','" + msg[i].pass + "','" + msg[i].origen;
+                    }); 
+                    almacen.guardarUsuario(myArray);
+                    almacen.leerNumeroUsuarios();  
+                    navigator.notification.alert("Migración Correcta",null,"Listo","Aceptar");               
+        },
+        error: function(jq, txt){
+                    //alert(jq + txt.responseText);
+                    navigator.notification.alert(jq + txt.responseText,null,"Error al Ingresar","Aceptar");
+                }
+            });
+                    //navigator.notification.alert("a guardar",null,"Error al Ingresar","Aceptar");    
+                            //almacen.guardarEXT(fn.id_ext, fn.ubicacion,fn.capacidad,fn.clase,fn.agente,fn.marca,fn.frecarga,fn.ffabricacion,fn.fproxservicio);
+                    
+                    }
+                    else
+                    {
+                       navigator.notification.alert("Se tienen registros en la base de datos, antes eliminelos",null,"Advertencia","Aceptar");    
+                    }
+        }
+    btnEliminarUsuarios: function(){        
+            almacen.eliminarUsuarios();
+            almacen.leerNumeroUsuarios();  
     }
 };
 //$(fn.init);

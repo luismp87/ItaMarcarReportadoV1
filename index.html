@@ -29,7 +29,13 @@
                                 </tr>                                
                                 </table>
    </div>
-<div data-role="footer" data-position="fixed"><span style="font-size:8pt;">Sistemas 2016 PK</span></div>
+ <div data-role="footer" data-position="fixed">
+                            <div data-role="navbar">
+                                <ul>
+                                    <li><a class="ui-btn ui-icon-grid ui-btn-icon-top" href="#MenuCatalogos">Actualizar Catálogos</a></li>                                    
+                                </ul>
+                            </div>
+                       </div>
 </div>
 <div data-roel="page" id="IngresoCubo">
     <div data-role="header"><h2>ItaMarcarReportadoV1</h2></div>
@@ -67,9 +73,55 @@
     <img src="Imagenes\01.jpg" width=70px>
     </div>
     
+        <h4>Folio del CUBO: <span class="Informacion" id="hFOLIOCUBO"></span></h4>
+        <h4>Origen del usuario: <span class="Informacion" id="hORIGENUSUARIO"></span></h4>
+        <h4>Proveedor :<span class="Informacion" id="hNPROVEEDOR"></span></h4>                                      
+        <h4>Placa :<span class="Informacion" id="hPLACA"></span></h4>
+        <h4>Descripcion del CUBO :<span class="Informacion" id="hDESCRIPCIONCUBO"></span></h4>
 
     </div>
 </div>
+<div data-role="page" id="MenuCatalogos">
+<div data-role="header"><h2>ItaMarcarReportadoV1</h2></div>
+<div data-role="main" class="ui-content">
+    <div id="imagenita">
+    <img src="Imagenes\01.jpg" width=70px>
+    </div>
+
+    <ul data-role="listview" data-inset="true">
+      <li>
+        <a href="#" id="ConsultaNumUsuarios"><img src="Imagenes\users.png">Actualizar Catálogo de Usuarios</a>
+      </li>
+     
+    </ul>
+
+</div>
+</div>
+<div data-role="page" id="RemotaALocal">
+                 <div data-role="header"><h1>ItaMarcarReportadoV1</h1></div>
+                 <div data-role="main" class="ui-content">
+               <table>
+                 <tr>
+                 <td>Usuarios:</td>
+                 <td>
+                   <input type="text" placeholder="Registrados localmente" id="NumUsuarios" readonly> 
+                 </td>
+                 </tr>
+                  <tr>                 
+                 <td colspan="2">
+                   <input type="submit" value="Remoto > Local" id="btnMigrarUsuarios">
+                 </td>
+                 </tr>
+                 <tr>                 
+                 <td colspan="2">
+                   <input type="submit" value="Eliminar Local" id="btnEliminarUsuarios">
+                 </td>
+                 </tr>
+               </table>
+
+                 </div>
+                 <div data-role="footer" data-position="fixed"></div>
+            </div>
 
 
 
