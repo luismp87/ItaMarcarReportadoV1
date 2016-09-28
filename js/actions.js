@@ -3,10 +3,8 @@ var fn = {
 		document.addEventListener("deviceready",fn.init,false);
 	},
 	init: function(){
-        if(fn.estaRegistrado() == false)
-        {
-        window.location.href = '#login';
-        }
+        if(!fn.estaRegistrado())
+        window.location.href = '#login';        
 		// LOGIO EN EL SERVIDOR --> $('#btnautentificar').tap(fn.autentificar);
         $('#btnautentificar').tap(fn.autentificarJSON);
         $('#CerrarSesion').tap(fn.cerrarsesion);
@@ -98,16 +96,9 @@ window.location.href = '#login';
         }   
     },
     ConsultaNumUsuarios: function(){
-         if(window.localStorage.getItem("user") == "s")
-        {
         almacen.leerNumeroUsuarios();  
         window.location.href = '#RemotaALocal';
-        }
-        else
-        {
-        navigator.notification.alert("Su usuario no esta autorizado para ingresar a esta opción",null,"Advertencia","Aceptar");    
-        window.location.href = '#login';
-        }
+    
     },
     btnMigrarUsuarios: function(){ 
         var myArray = new Array(30); 
