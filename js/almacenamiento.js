@@ -117,6 +117,7 @@ var almacen = {
 	{
 		window.localStorage.setItem("user",usuariof);
 		window.localStorage.setItem("origen",origenf);
+		$("#txtcubo").val("");
  		window.location.href = '#IngresoCubo';
 	}
 //navigator.notification.alert("almacen.numerodefilas: " + almacen.numerodefilas, null, "Correcto", "Aceptar");

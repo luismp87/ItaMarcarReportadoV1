@@ -19,7 +19,7 @@ var fn = {
         $('#ConsultaNumUsuarios').tap(fn.ConsultaNumUsuarios);
         $('#btnMigrarUsuarios').tap(fn.btnMigrarUsuarios);
         $('#btnEliminarUsuarios').tap(fn.btnEliminarUsuarios);
-        
+        $('#btnabortar').tap(fn.btnabortar);
  
 	},
     autentificarJSON : function() {         
@@ -90,14 +90,15 @@ window.location.href = '#login';
                             }
                         else if(msg[i].Respuesta == "noencontro")
                             {
-                            navigator.notification.alert("No se encontro información.",null,"Error al consultar CUBO","Aceptar");   
+                            navigator.notification.alert("No se encontro información.",null,"No Existe en la Base de datos","Aceptar");   
                             //alert("Usuario o contraseña incorrectos");
                             }                        
                     });                 
                 },
                 error: function(jq, txt){
+                    $.mobile.loading("hide");
                     //alert(jq + txt.responseText);
-                    navigator.notification.alert(jq + txt.responseText,null,"Error al consultar CUBO","Aceptar");
+                    navigator.notification.alert("Verifique su conexion Celular ó Wifi " + jq + txt.responseText,null,"Error al consultar CUBO","Aceptar");
                 }
             });
         }
@@ -161,6 +162,9 @@ window.location.href = '#login';
             navigator.notification.alert("Ingrese los datos requeridos",null,"Error al Ingresar","Aceptar");
             //alert("Ingrese el ID del extintor");
         }   
+    },
+    btnabortar: function(){
+        $("#txtcubo").val("");
     }
 };
 //$(fn.init);
