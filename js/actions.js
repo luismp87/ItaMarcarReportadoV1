@@ -6,7 +6,8 @@ var fn = {
         if(!fn.estaRegistrado())
         window.location.href = '#login';        
 		// LOGIO EN EL SERVIDOR --> $('#btnautentificar').tap(fn.autentificar);
-        $('#btnautentificar').tap(fn.autentificarJSON);
+        //$('#btnautentificar').tap(fn.autentificarJSON);
+        $('#btnautentificar').tap(fn.autentificarSQL);
         $('#CerrarSesion').tap(fn.cerrarsesion);
         $('#ConsultarCUBO').tap(fn.ConsultarCUBO);
         $('#ConsultaNumUsuarios').tap(fn.ConsultaNumUsuarios);
@@ -95,10 +96,8 @@ window.location.href = '#login';
             //alert("todos los campos son requeridos");
         }   
     },
-    ConsultaNumUsuarios: function(){
-         navigator.notification.alert("mensaje 1",null,"breaks","Aceptar");       
-        almacen.leerNumeroUsuarios();  
-          navigator.notification.alert("mensaje 2",null,"breaks","Aceptar");      
+    ConsultaNumUsuarios: function(){      
+        almacen.leerNumeroUsuarios();     
         window.location.href = '#RemotaALocal';
     
     },
@@ -139,6 +138,19 @@ window.location.href = '#login';
     btnEliminarUsuarios: function(){        
             almacen.eliminarUsuarios();
             almacen.leerNumeroUsuarios();  
+    },
+    autentificarSQL: function(){
+        var usu = $('#txtusuario').val();      
+        var con = $('#txtcontrasena').val(); 
+        if((usu != '') || (con != '')){   
+            $.mobile.loading("show",{theme: 'b'});
+            almacen.leerinformacionUsuario();
+            $.mobile.loading("hide");
+        }
+        else{
+            navigator.notification.alert("Ingrese los datos requeridos",null,"Error al Ingresar","Aceptar");
+            //alert("Ingrese el ID del extintor");
+        }   
     }
 };
 //$(fn.init);

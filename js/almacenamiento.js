@@ -16,14 +16,10 @@ var almacen = {
 										navigator.notification.alert("Ejecución satisfactoria", null, "Correcto", "Aceptar");
 									},
 		/*FUNCION PARA LEER EN BASE DE DATOS*/
-	leerNumeroUsuarios: function(){
-			 navigator.notification.alert("mensaje 3",null,"breaks","Aceptar");      
-			almacen.db = window.openDatabase("ItaMUDB","1.0","ItaMUV1 Storage",20000);
-			 navigator.notification.alert("mensaje 4",null,"breaks","Aceptar");      
-			almacen.db.transaction(almacen.CreaSINOExiste, almacen.error, null);
-			 navigator.notification.alert("mensaje 5",null,"breaks","Aceptar");      
-			almacen.db.transaction(almacen.ConsultaNumeroDeUsuario, almacen.error, null);
-			 navigator.notification.alert("mensaje 6",null,"breaks","Aceptar");      
+	leerNumeroUsuarios: function(){  
+			almacen.db = window.openDatabase("ItaMUDB","1.0","ItaMUV1 Storage",20000);    
+			almacen.db.transaction(almacen.CreaSINOExiste, almacen.error, null);    
+			almacen.db.transaction(almacen.ConsultaNumeroDeUsuario, almacen.error, null);  
 		},
 									ConsultaNumeroDeUsuario: function(tx){
 										tx.executeSql("SELECT count(*) as filas FROM usuarios", [], function(tx2, t){
@@ -73,6 +69,54 @@ var almacen = {
 		},
 									eliminarUsuariosQuery: function(tx){
 									tx.executeSql("DELETE FROM usuarios");
+	},
+			leerinformacionUsuario: function(tx){
+			almacen.db = window.openDatabase("ItaMUDB","1.0","ItaMUV1 Storage",20000);
+			almacen.db.transaction(almacen.CreaSINOExiste, almacen.error, null);
+			almacen.db.transaction(almacen.leerinfoUsuario, almacen.error, null);
+
+	},
+									leerinfoUsuario: function(tx){
+										
+									tx.executeSql("SELECT usuario,pass,origen FROM usuarios where upper(usuario) = upper('" +$('#txtusuario').val()+ "') and upper(pass) = upper('" +$('#txtcontrasena').val()+ "')", [], function(tx2, t){
+									var encontroUsuario = 0;
+											for(i = 0; i < t.rows.length; i++){
+							encontroUsuario= 1;
+							/*$("#pPLANTA").text(t.rows.item(i).planta);
+							$("#pUBICACION").text(t.rows.item(i).ubicacion);
+                            $("#pCAPACIDAD").text(t.rows.item(i).capacidad);
+                            $("#pCLASE").text(t.rows.item(i).clase);
+                            $("#pAGENTE").text(t.rows.item(i).agente);
+                            $("#pMARCA").text(t.rows.item(i).marca);
+                            $("#pFRECARGA").text(t.rows.item(i).frecarga);
+                            $("#pFFABRICACION").text(t.rows.item(i).ffabricacion);
+                            $("#pFPROXSERVICIO").text(t.rows.item(i).fproxservicio);  */                 
+										
+
+												/*navigator.notification.confirm("Personas: " + t.rows.item(i).pr + "\n"
+																			   + "Días: " + t.rows.item(i).di + "\n"
+																			   + "Tipo de Habitación: " + t.rows.item(i).th,
+																			  function(btn){
+																				  if(btn == 1) navigator.vibrate(500);
+																				  if(btn == 2) navigator.notification.beep(1);
+																			  }, "Tabla Reservas","Vibrar,Sonar,Cancelar");*/
+												//server.sincronizar(t.rows.item(i).pr,t.rows.item(i).di,t.rows.item(i).th);
+												//alert("id_ext: " + t.rows.item(i).id_ext);
+												//navigator.notification.alert("ubicacion: " + t.rows.item(i).id_ext, null, "Correcto", "Aceptar");
+											}
+
+	if(encontroUsuario == 0)
+	{
+		navigator.notification.alert("Verifique su usuario y contraseña", null, "Advertencia", "Aceptar");
 	}
+	else if(encontroUsuario >= 1)
+	{
+ 		window.location.href = '#IngresoCubo';
+	}
+//navigator.notification.alert("almacen.numerodefilas: " + almacen.numerodefilas, null, "Correcto", "Aceptar");
+										});
+	
+	}
+
 
 }
