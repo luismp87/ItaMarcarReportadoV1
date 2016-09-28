@@ -2,8 +2,7 @@ var fn = {
 	ready: function(){
 		document.addEventListener("deviceready",fn.init,false);
 	},
-	init: function(){
-        navigator.notification.alert(fn.estaRegistrado() + " " + window.localStorage.getItem("user"),null,"x","Aceptar"); 
+	init: function(){        
         if(fn.estaRegistrado() == false)
         {
         window.location.href = '#login';      
@@ -164,5 +163,5 @@ window.location.href = '#login';
         }   
     }
 };
-//$(fn.init);
-$(fn.ready);
+$(fn.init);
+//$(fn.ready);
