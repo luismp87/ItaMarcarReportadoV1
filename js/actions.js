@@ -3,8 +3,8 @@ var fn = {
 		document.addEventListener("deviceready",fn.init,false);
 	},
 	init: function(){
-        navigator.notification.alert(!fn.estaRegistrado(),null,"x","Aceptar"); 
-        if(!fn.estaRegistrado())
+        navigator.notification.alert(!fn.estaRegistrado() + " " + window.localStorage.getItem("user"),null,"x","Aceptar"); 
+        if(fn.estaRegistrado() == false)
         {
         window.location.href = '#login';        
         }
