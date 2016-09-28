@@ -96,7 +96,9 @@ window.location.href = '#login';
         }   
     },
     ConsultaNumUsuarios: function(){
+         navigator.notification.alert("mensaje 1",null,"breaks","Aceptar");       
         almacen.leerNumeroUsuarios();  
+          navigator.notification.alert("mensaje 2",null,"breaks","Aceptar");      
         window.location.href = '#RemotaALocal';
     
     },

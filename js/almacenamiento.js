@@ -17,10 +17,13 @@ var almacen = {
 									},
 		/*FUNCION PARA LEER EN BASE DE DATOS*/
 	leerNumeroUsuarios: function(){
-			
-			almacen.db = window.openDatabase("ItaMarcarUnidadesDB","1.0","ItaMarcarUnidadesV1 Storage",20000);
+			 navigator.notification.alert("mensaje 3",null,"breaks","Aceptar");      
+			almacen.db = window.openDatabase("ItaMUDB","1.0","ItaMUV1 Storage",20000);
+			 navigator.notification.alert("mensaje 4",null,"breaks","Aceptar");      
 			almacen.db.transaction(almacen.CreaSINOExiste, almacen.error, null);
+			 navigator.notification.alert("mensaje 5",null,"breaks","Aceptar");      
 			almacen.db.transaction(almacen.ConsultaNumeroDeUsuario, almacen.error, null);
+			 navigator.notification.alert("mensaje 6",null,"breaks","Aceptar");      
 		},
 									ConsultaNumeroDeUsuario: function(tx){
 										tx.executeSql("SELECT count(*) as filas FROM usuarios", [], function(tx2, t){
@@ -47,7 +50,7 @@ var almacen = {
 /*FUNCION PARA GUARDAR EN BASE DE DATOS*/
 	guardarUsuario: function(myArray){		
 		almacen.myArray	= myArray;        
-			almacen.db = window.openDatabase("ItaMarcarUnidadesDB","1.0","ItaMarcarUnidadesV1 Storage",20000);
+			almacen.db = window.openDatabase("ItaMUDB","1.0","ItaMUV1 Storage",20000);
 			almacen.db.transaction(almacen.GuardarUsuario, almacen.error, null);
 			
 		},
@@ -64,7 +67,7 @@ var almacen = {
 									},
 	/*FUNCION PARA ELIMINAR EN BASE DE DATOS*/
 		eliminarUsuarios: function(tx){
-			almacen.db = window.openDatabase("ItaMarcarUnidadesDB","1.0","ItaMarcarUnidadesV1 Storage",20000);
+			almacen.db = window.openDatabase("ItaMUDB","1.0","ItaMUV1 Storage",20000);
 			almacen.db.transaction(almacen.CreaSINOExiste, almacen.error, null);
 			almacen.db.transaction(almacen.eliminarUsuariosQuery, almacen.error, almacen.Correcto);
 		},
