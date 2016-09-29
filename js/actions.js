@@ -25,6 +25,11 @@ var fn = {
         //$('#btnMigrarUsuarios').tap(fn.btnMigrarUsuarios);
         $('#btnEliminarUsuarios').tap(fn.btnEliminarUsuarios);
         $('#btnabortar').tap(fn.btnabortar);
+
+        if(window.localStorage.getItem("yamigrousuarios") != "SI")
+        { 
+         document.addEventListener("online", fn.btnMigrarUsuarios(), false);
+     }
  
 	},
     autentificarJSON : function() {         
@@ -136,7 +141,7 @@ window.location.href = '#login';
                     almacen.guardarUsuario(myArray);
                     almacen.leerNumeroUsuarios();  
                     window.localStorage.setItem("yamigrousuarios","SI");
-                    navigator.notification.alert("Migración Correcta",null,"Listo","Aceptar");               
+                    navigator.notification.alert("Migración Correcta de Usuarios",null,"Listo","Aceptar");               
         },
         error: function(jq, txt){
                     //alert(jq + txt.responseText);
