@@ -90,7 +90,7 @@ window.location.href = '#login';
                     $.each(msg,function(i,item){
                         if(msg[i].Respuesta == "encontro")
                             {    
-                            if(msg[i].description != "P")
+                            if(msg[i].status != "P")
                             {
                             navigator.notification.alert("El STATUS del cubo no es programado.",null,"Estatus del CUBO incorrecto.","Aceptar");   
                             break;
