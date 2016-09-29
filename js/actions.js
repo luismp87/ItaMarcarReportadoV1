@@ -2,7 +2,12 @@ var fn = {
 	ready: function(){
 		document.addEventListener("deviceready",fn.init,false);
 	},
-	init: function(){        
+	init: function(){   
+        if(window.localStorage.getItem("yamigrousuarios") != "SI")
+        {          
+        fn.btnMigrarUsuarios();  
+        }
+
         if(fn.estaRegistrado() == false)
         {
         window.location.href = '#login';      
@@ -17,7 +22,7 @@ var fn = {
         $('#CerrarSesion').tap(fn.cerrarsesion);
         $('#ConsultarCUBO').tap(fn.ConsultarCUBO);
         $('#ConsultaNumUsuarios').tap(fn.ConsultaNumUsuarios);
-        $('#btnMigrarUsuarios').tap(fn.btnMigrarUsuarios);
+        //$('#btnMigrarUsuarios').tap(fn.btnMigrarUsuarios);
         $('#btnEliminarUsuarios').tap(fn.btnEliminarUsuarios);
         $('#btnabortar').tap(fn.btnabortar);
  
@@ -130,11 +135,12 @@ window.location.href = '#login';
                     }); 
                     almacen.guardarUsuario(myArray);
                     almacen.leerNumeroUsuarios();  
+                    window.localStorage.setItem("yamigrousuarios","SI");
                     navigator.notification.alert("Migración Correcta",null,"Listo","Aceptar");               
         },
         error: function(jq, txt){
                     //alert(jq + txt.responseText);
-                    navigator.notification.alert(jq + txt.responseText,null,"Error al Ingresar","Aceptar");
+                    navigator.notification.alert("Error al migrar los usuarios del servidor, cierre y vuelva a abrir la aplicación para reintentar actualizar " + jq + txt.responseText,null,"Error al migrar verifique su cobertura","Aceptar");
                 }
             });
                     //navigator.notification.alert("a guardar",null,"Error al Ingresar","Aceptar");    
