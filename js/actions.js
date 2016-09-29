@@ -3,10 +3,10 @@ var fn = {
 		document.addEventListener("deviceready",fn.init,false);
 	},
 	init: function(){   
-        if(window.localStorage.getItem("yamigrousuarios") != "SI")
+        /*if(window.localStorage.getItem("yamigrousuarios") != "SI")
         {          
         fn.btnMigrarUsuarios();  
-        }
+        }*/
 
         if(fn.estaRegistrado() == false)
         {
