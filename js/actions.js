@@ -89,7 +89,12 @@ window.location.href = '#login';
                     $.mobile.loading("hide");
                     $.each(msg,function(i,item){
                         if(msg[i].Respuesta == "encontro")
-                            {                           
+                            {    
+                            if(msg[i].description != "P")
+                            {
+                            navigator.notification.alert("El STATUS del cubo no es programado.",null,"Estatus del CUBO incorrecto.","Aceptar");   
+                            break;
+                            }                       
                             window.location.href = '#MuestraInfoCubo';
                             $("#hFOLIOCUBO").text($('#txtcubo').val());
                             $("#hORIGENUSUARIO").text(window.localStorage.getItem("origen"));
@@ -102,7 +107,7 @@ window.location.href = '#login';
                             }
                         else if(msg[i].Respuesta == "noencontro")
                             {
-                            navigator.notification.alert("No se encontro información.",null,"No Existe en la Base de datos","Aceptar");   
+                            navigator.notification.alert("No se encontro información.",null,"No Existe en la Base de datos.","Aceptar");   
                             //alert("Usuario o contraseña incorrectos");
                             }                        
                     });                 
