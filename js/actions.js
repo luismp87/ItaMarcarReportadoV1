@@ -26,10 +26,9 @@ var fn = {
         $('#btnEliminarUsuarios').tap(fn.btnEliminarUsuarios);
         $('#btnabortar').tap(fn.btnabortar);
 
-        if(window.localStorage.getItem("yamigrousuarios") != "SI")
-        { 
+
          document.addEventListener("online", fn.btnMigrarUsuarios(), false);
-        }
+        
  
 	},
     autentificarJSON : function() {         
@@ -98,7 +97,7 @@ window.location.href = '#login';
                             $("#hPLACA").text(msg[i].tm_vehicle_id);
                             $("#hDESCRIPCIONCUBO").text(msg[i].description);
 
-                            $("#btnMARCAR_PK").text("--CEDI--");
+                            $("#btnMARCAR_PK").text(msg[i].ANDEN_FISICO);
 
                             }
                         else if(msg[i].Respuesta == "noencontro")
@@ -126,6 +125,8 @@ window.location.href = '#login';
     
     },
     btnMigrarUsuarios: function(){ 
+        if(window.localStorage.getItem("yamigrousuarios") != "SI")
+        {         
         var myArray = new Array(30); 
         var registros = $('#NumUsuarios').val();  
         if(registros == 0)
@@ -148,7 +149,7 @@ window.location.href = '#login';
         },
         error: function(jq, txt){
                     //alert(jq + txt.responseText);
-                    navigator.notification.alert("Error al migrar los usuarios del servidor, cierre y vuelva a abrir la aplicación para reintentar actualizar " + jq + txt.responseText,null,"Error al migrar verifique su cobertura","Aceptar");
+                    navigator.notification.alert("Error al migrar los usuarios del servidor, cierre y vuelva a abrir la aplicación para reintentar actualizar ó verifique su cobertura" + jq + txt.responseText,null,"Error al migrar verifique su cobertura","Aceptar");
                 }
             });
                     //navigator.notification.alert("a guardar",null,"Error al Ingresar","Aceptar");    
@@ -159,7 +160,8 @@ window.location.href = '#login';
                     {
                        navigator.notification.alert("Se tienen registros en la base de datos, antes eliminelos",null,"Advertencia","Aceptar");    
                     }
-        },
+        }
+    },
     btnEliminarUsuarios: function(){        
             almacen.eliminarUsuarios();
             almacen.leerNumeroUsuarios();  
@@ -181,5 +183,5 @@ window.location.href = '#login';
         $("#txtcubo").val("");
     }
 };
-//(fn.init);
+//$(fn.init);
 $(fn.ready);
