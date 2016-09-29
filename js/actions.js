@@ -181,5 +181,5 @@ window.location.href = '#login';
         $("#txtcubo").val("");
     }
 };
-//$(fn.init);
+//(fn.init);
 $(fn.ready);

@@ -1,5 +1,5 @@
 .Informacion, .entrada_texto{
-    color: black !important;
+    
     font-family: fantasy;        
 }
 table > tbody tr td{
@@ -18,8 +18,12 @@ text-align: center;
 .imaicono {
 	width: 75px;
 }
+.resaltar05{
+	font-size: 100%;
+	color: green !important;;
+}
 .resaltar{
-	font-size: 150%;
+	font-size: 200%;
 	color: green !important;;
 }
 
