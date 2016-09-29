@@ -29,7 +29,7 @@ var fn = {
         if(window.localStorage.getItem("yamigrousuarios") != "SI")
         { 
          document.addEventListener("online", fn.btnMigrarUsuarios(), false);
-     }
+        }
  
 	},
     autentificarJSON : function() {         
@@ -77,13 +77,14 @@ var fn = {
 window.location.href = '#login';
     },
     ConsultarCUBO: function(){         
-        var cubo = $('#txtcubo').val();       
+        var cubo = $('#txtcubo').val();    
+        var origen = window.localStorage.getItem("origen");   
         if(cubo != ''){   
             $.mobile.loading("show",{theme: 'b'});
             $.ajax({
                 method: 'POST',
                 url: 'http://servidoriis.laitaliana.com.mx/LM/wsitamarcarunidades/Service1.asmx/MuestraInfoCubo',              
-                data: {cubo: cubo},
+                data: {cubo: cubo, origen: origen},
                 dataType: "json",
                 success: function (msg){
                     $.mobile.loading("hide");
@@ -96,6 +97,8 @@ window.location.href = '#login';
                             $("#hNPROVEEDOR").text(msg[i].vendor_name);
                             $("#hPLACA").text(msg[i].tm_vehicle_id);
                             $("#hDESCRIPCIONCUBO").text(msg[i].description);
+
+                            $("#btnMARCAR_PK").text("--CEDI--");
 
                             }
                         else if(msg[i].Respuesta == "noencontro")

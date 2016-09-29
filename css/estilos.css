@@ -18,4 +18,8 @@ text-align: center;
 .imaicono {
 	width: 75px;
 }
+.resaltar{
+	font-size: 150%;
+	color: green !important;;
+}
 
