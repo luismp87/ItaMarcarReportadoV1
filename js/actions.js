@@ -27,6 +27,8 @@ var fn = {
         $('#btnEliminarUsuarios').tap(fn.btnEliminarUsuarios);
         $('#btnabortar').tap(fn.btnabortar);
         $('#ConsultarCUBOC').tap(fn.ConsultarCUBOC);
+        $('#ConsultarAlmacenesXCUBO').tap(fn.ConsultarAlmacenesXCUBO);
+        
         
 
 
@@ -98,10 +100,10 @@ window.location.href = '#login';
                        
                         if(msg[i].Respuesta == "encontro")
                             {      
-                            alert("SS1");                  
+                            //alert("SS1");                  
                             if(msg[i].status != "P")
                             {
-                                alert("El STATUS del cubo no es programado.");
+                                //alert("El STATUS del cubo no es programado.");
                                 navigator.notification.alert("El STATUS del cubo no es programado, se aborta la operacion.",null,"Estatus del CUBO incorrecto.","Aceptar");                               
                             }
                             else
@@ -119,7 +121,7 @@ window.location.href = '#login';
                             }
                         else if(msg[i].Respuesta == "noencontro")
                             {
-                            alert("No se encontro información del CUBO relacionada con el origen: " + origen);
+                            //alert("No se encontro información del CUBO relacionada con el origen: " + origen);
                             navigator.notification.alert("No se encontro información del CUBO relacionada con el almacén fisico: " + origen,null,"No Existe en la Base de datos.","Aceptar");   
                             //alert("Usuario o contraseña incorrectos"); 
                             }                        
@@ -127,8 +129,8 @@ window.location.href = '#login';
                 },
                 error: function(jq, txt){
                     $.mobile.loading("hide");
-                    alert(jq + txt.responseText);
-                    //navigator.notification.alert("Verifique su conexion Celular ó Wifi " + jq + txt.responseText,null,"Error al consultar CUBO","Aceptar");
+                    //alert(jq + txt.responseText);
+                    navigator.notification.alert("Verifique su conexion Celular ó Wifi " + jq + txt.responseText,null,"Error al consultar CUBO","Aceptar");
                 }
             });
         }
@@ -170,7 +172,7 @@ window.location.href = '#login';
                             }
                         else if(msg[i].Respuesta == "noencontro")
                             {
-                            alert("No se encontro información del CUBO en la base de datos.");
+                            //alert("No se encontro información del CUBO en la base de datos.");
                             navigator.notification.alert("No se encontro información del CUBO en la base de datos." ,null,"No Existe en la Base de datos.","Aceptar");   
                             //alert("Usuario o contraseña incorrectos"); 
                             }                        
@@ -178,8 +180,8 @@ window.location.href = '#login';
                 },
                 error: function(jq, txt){
                     $.mobile.loading("hide");
-                    alert(jq + txt.responseText);
-                    //navigator.notification.alert("Verifique su conexion Celular ó Wifi " + jq + txt.responseText,null,"Error al consultar CUBO","Aceptar");
+                    //alert(jq + txt.responseText);
+                    navigator.notification.alert("Verifique su conexion Celular ó Wifi " + jq + txt.responseText,null,"Error al consultar CUBO","Aceptar");
                 }
             });
         }
@@ -250,6 +252,15 @@ window.location.href = '#login';
     },
     btnabortar: function(){
         $("#txtcubo").val("");
+    },
+    ConsultarAlmacenesXCUBO: function(){
+         $("#hCSTATUS").text("");
+          $("#hCORIGENUSUARIO").text("");
+           $("#hCNPROVEEDOR").text("");
+            $("#hCPLACA").text("");
+             $("#hCDESCRIPCIONCUBO").text("");
+             $("#btnCMARCAR_PK").text("");
+             $("#txtcuboC").val("");
     }
 };
 //$(fn.init);
