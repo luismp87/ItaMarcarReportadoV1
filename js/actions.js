@@ -153,9 +153,9 @@ window.location.href = '#login';
                 dataType: "json",
                 success: function (msg){
                     $.mobile.loading("hide");
-
+$("#btnCMARCAR_PK").text("");
                     $.each(msg,function(i,item){
-                       
+                        
                         if(msg[i].Respuesta == "encontro")
                             {      
                
