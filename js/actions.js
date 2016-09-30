@@ -164,7 +164,7 @@ window.location.href = '#login';
                                 $("#hCPLACA").text(msg[i].tm_vehicle_id);
                                 $("#hCDESCRIPCIONCUBO").text(msg[i].description);
 
-                                $("#btnCMARCAR_PK").append(msg[i].ANDEN_FISICO + "<BR>");
+                                $("#btnCMARCAR_PK").append((i+1) + ".- "+msg[i].ANDEN_FISICO + "<BR>");
                             
 
                             }
