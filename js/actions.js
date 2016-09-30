@@ -3,10 +3,11 @@ var fn = {
 		document.addEventListener("deviceready",fn.init,false);
 	},
 	init: function(){   
-        /*if(window.localStorage.getItem("yamigrousuarios") != "SI")
+
+        if(window.localStorage.getItem("yamigrousuarios") != "SI")
         {          
         fn.btnMigrarUsuarios();  
-        }*/
+        }
 
         if(fn.estaRegistrado() == false)
         {
@@ -25,6 +26,8 @@ var fn = {
         //$('#btnMigrarUsuarios').tap(fn.btnMigrarUsuarios);
         $('#btnEliminarUsuarios').tap(fn.btnEliminarUsuarios);
         $('#btnabortar').tap(fn.btnabortar);
+        $('#ConsultarCUBOC').tap(fn.ConsultarCUBOC);
+        
 
 
          document.addEventListener("online", fn.btnMigrarUsuarios(), false);
@@ -75,10 +78,13 @@ var fn = {
     $("#txtcontrasena").val("");
 window.location.href = '#login';
     },
-    ConsultarCUBO: function(){         
+    ConsultarCUBO: function(){    
+
         var cubo = $('#txtcubo').val();    
         var origen = window.localStorage.getItem("origen");   
-        if(cubo != ''){   
+        
+        if(cubo != ''){ 
+         
             $.mobile.loading("show",{theme: 'b'});
             $.ajax({
                 method: 'POST',
@@ -87,42 +93,100 @@ window.location.href = '#login';
                 dataType: "json",
                 success: function (msg){
                     $.mobile.loading("hide");
+
                     $.each(msg,function(i,item){
+                       
                         if(msg[i].Respuesta == "encontro")
-                            {    
+                            {      
+                            alert("SS1");                  
                             if(msg[i].status != "P")
                             {
-                            navigator.notification.alert("El STATUS del cubo no es programado.",null,"Estatus del CUBO incorrecto.","Aceptar");   
-                            break;
-                            }                       
-                            window.location.href = '#MuestraInfoCubo';
-                            $("#hFOLIOCUBO").text($('#txtcubo').val());
-                            $("#hORIGENUSUARIO").text(window.localStorage.getItem("origen"));
-                            $("#hNPROVEEDOR").text(msg[i].vendor_name);
-                            $("#hPLACA").text(msg[i].tm_vehicle_id);
-                            $("#hDESCRIPCIONCUBO").text(msg[i].description);
+                                alert("El STATUS del cubo no es programado.");
+                                navigator.notification.alert("El STATUS del cubo no es programado, se aborta la operacion.",null,"Estatus del CUBO incorrecto.","Aceptar");                               
+                            }
+                            else
+                            {                 
+                                window.location.href = '#MuestraInfoCubo';
+                                $("#hFOLIOCUBO").text($('#txtcubo').val());
+                                $("#hORIGENUSUARIO").text(window.localStorage.getItem("origen"));
+                                $("#hNPROVEEDOR").text(msg[i].vendor_name);
+                                $("#hPLACA").text(msg[i].tm_vehicle_id);
+                                $("#hDESCRIPCIONCUBO").text(msg[i].description);
 
-                            $("#btnMARCAR_PK").text(msg[i].ANDEN_FISICO);
+                                $("#btnMARCAR_PK").text(msg[i].ANDEN_FISICO);
+                            }
 
                             }
                         else if(msg[i].Respuesta == "noencontro")
                             {
-                            navigator.notification.alert("No se encontro información.",null,"No Existe en la Base de datos.","Aceptar");   
-                            //alert("Usuario o contraseña incorrectos");
+                            alert("No se encontro información del CUBO relacionada con el origen: " + origen);
+                            navigator.notification.alert("No se encontro información del CUBO relacionada con el almacén fisico: " + origen,null,"No Existe en la Base de datos.","Aceptar");   
+                            //alert("Usuario o contraseña incorrectos"); 
                             }                        
                     });                 
                 },
                 error: function(jq, txt){
                     $.mobile.loading("hide");
-                    //alert(jq + txt.responseText);
-                    navigator.notification.alert("Verifique su conexion Celular ó Wifi " + jq + txt.responseText,null,"Error al consultar CUBO","Aceptar");
+                    alert(jq + txt.responseText);
+                    //navigator.notification.alert("Verifique su conexion Celular ó Wifi " + jq + txt.responseText,null,"Error al consultar CUBO","Aceptar");
                 }
             });
         }
         else{
             navigator.notification.alert("El CUBO es Requeridos",null,"Error al consultar CUBO","Aceptar");
             //alert("todos los campos son requeridos");
-        }   
+        }  
+    },
+        ConsultarCUBOC: function(){    
+
+        var cubo = $('#txtcuboC').val();   
+
+        if(cubo != ''){ 
+         
+            $.mobile.loading("show",{theme: 'b'});
+            $.ajax({
+                method: 'POST',
+                url: 'http://servidoriis.laitaliana.com.mx/LM/wsitamarcarunidades/Service1.asmx/MuestraInfoCuboV2',              
+                data: {cubo: cubo},
+                dataType: "json",
+                success: function (msg){
+                    $.mobile.loading("hide");
+
+                    $.each(msg,function(i,item){
+                       
+                        if(msg[i].Respuesta == "encontro")
+                            {      
+               
+                                               
+                                $("#hCSTATUS").text(msg[i].status);
+                                $("#hCORIGENUSUARIO").text(window.localStorage.getItem("origen"));
+                                $("#hCNPROVEEDOR").text(msg[i].vendor_name);
+                                $("#hCPLACA").text(msg[i].tm_vehicle_id);
+                                $("#hCDESCRIPCIONCUBO").text(msg[i].description);
+
+                                $("#btnCMARCAR_PK").append(msg[i].ANDEN_FISICO + "<BR>");
+                            
+
+                            }
+                        else if(msg[i].Respuesta == "noencontro")
+                            {
+                            alert("No se encontro información del CUBO en la base de datos.");
+                            navigator.notification.alert("No se encontro información del CUBO en la base de datos." ,null,"No Existe en la Base de datos.","Aceptar");   
+                            //alert("Usuario o contraseña incorrectos"); 
+                            }                        
+                    });                 
+                },
+                error: function(jq, txt){
+                    $.mobile.loading("hide");
+                    alert(jq + txt.responseText);
+                    //navigator.notification.alert("Verifique su conexion Celular ó Wifi " + jq + txt.responseText,null,"Error al consultar CUBO","Aceptar");
+                }
+            });
+        }
+        else{
+            navigator.notification.alert("El CUBO es Requeridos",null,"Error al consultar CUBO","Aceptar");
+            //alert("todos los campos son requeridos");
+        }  
     },
     ConsultaNumUsuarios: function(){      
         almacen.leerNumeroUsuarios();     

@@ -39,7 +39,7 @@
                        </div>-->
 </div>
 <div data-role="page" id="IngresoCubo">
-    <div data-role="header"><h2>ItaMarcarReportadoV1</h2></div>
+    <div data-role="header"><h2>Marcar como reportado en<br>vigilancia</h2></div>
     <div data-role="main" class="ui-content">
     <div id="imagenita">
     <img src="Imagenes\01.jpg" width=70px>
@@ -54,7 +54,7 @@
                                 
 <br>
 
-                                <input type="submit" value="Consultar CUBO" id="ConsultarCUBO">
+                                <input type="submit" value="Consultar CUBO para marcar como reportado en vigilancia" id="ConsultarCUBO">
 
                                 
                                 
@@ -64,7 +64,8 @@
      <div data-role="footer" data-position="fixed">
                             <div data-role="navbar">
                                 <ul>
-                                    <li><a class="ui-btn ui-icon-home ui-btn-icon-top" id="CerrarSesion" href="#">CERRAR SESION</a></li>                                    
+                                    <li><a class="ui-btn ui-icon-home ui-btn-icon-top" id="CerrarSesion" href="#">CERRAR SESION</a></li>
+                                     <li><a class="ui-btn ui-icon-search ui-btn-icon-top" id="ConsultarAlmacenesXCUBO" href="#MuestraAlmacensProgramadosPorCubo">Consultar almacenes<br>programados por cubo</a></li>                                    
                                 </ul>
                             </div><!-- /navbar -->
                        </div>
@@ -118,8 +119,45 @@
                             <div data-role="navbar">
                                 <ul>
                                     <li><a href="#IngresoCubo" class="ui-btn ui-icon-delete ui-btn-icon-top" id="btnabortar">Abortar</a></li>
-                                     <li><a href="#" class="ui-btn ui-icon-alert ui-btn-icon-top">Marcar</a></li>
+                                     <li><a href="#" class="ui-btn ui-icon-alert ui-btn-icon-top">Marcar como reportado en vigilancia</a></li>
                                                
+                                </ul>
+                            </div><!-- /navbar -->
+                       </div>
+</div>
+<div data-role="page" id="MuestraAlmacensProgramadosPorCubo">
+    <div data-role="header"><h3>Consultar los almacenes<br>programados por CUBO</h3></div>
+    <div data-role="main" class="ui-content">
+    <div id="imagenita">
+    <img src="Imagenes\01.jpg" width=70px>
+    </div>
+                                <div class="Cconsulta">
+                                <h3>Ingrese el folio del CUBO:</h3>
+                                </div>
+                                <div class="centrado">
+                                <input type="number" class="entrada_texto" id="txtcuboC" placeholder="Folio del CUBO" value="">
+                                </div>
+                               
+                                
+<br>
+
+                                <input type="submit" value="Consultar CUBO para ver los almacenes programados" id="ConsultarCUBOC">
+
+        <h5>Status del cubo : <span class="Informacion resaltar05" id="hCSTATUS"></span></h5>
+        <h5>Origen actual del usuario: <span class="Informacion resaltar05" id="hCORIGENUSUARIO"></span></h5>
+        <h5>Proveedor: <span class="Informacion resaltar05" id="hCNPROVEEDOR"></span></h5>                                      
+        <h5>Placa: <span class="Informacion resaltar05" id="hCPLACA"></span></h5>
+        <h5>Descripción del CUBO: <span class="Informacion resaltar05" id="hCDESCRIPCIONCUBO"></span></h5>
+<div class="centrado resaltar">
+<span class="Informacion" id="btnCMARCAR_PK"></span>
+</div>
+        <!--<input type="submit" value="" id="btnMARCAR_PK">-->
+
+    </div>
+    <div data-role="footer" data-position="fixed">
+                            <div data-role="navbar">
+                                <ul>
+                                    <li><a href="#IngresoCubo" class="ui-btn ui-icon-delete ui-btn-icon-top" id="btnAtrasConsulta">Atras</a></li>                                                                           
                                 </ul>
                             </div><!-- /navbar -->
                        </div>
