@@ -15,6 +15,7 @@ var fn = {
         }
         else
         {
+        $("#lblorigenactual").text("Tu Ubicación: " + window.localStorage.getItem("origen"));
         window.location.href = '#IngresoCubo';     
         }
 		// LOGIO EN EL SERVIDOR --> $('#btnautentificar').tap(fn.autentificar);

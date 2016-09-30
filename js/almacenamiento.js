@@ -117,6 +117,7 @@ var almacen = {
 	{
 		window.localStorage.setItem("user",usuariof);
 		window.localStorage.setItem("origen",origenf);
+		$("#lblorigenactual").text("Tu Ubicación: " + window.localStorage.getItem("origen"));
 		$("#txtcubo").val("");
  		window.location.href = '#IngresoCubo';
 	}
