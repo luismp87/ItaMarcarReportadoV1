@@ -3,7 +3,7 @@ var fn = {
 		document.addEventListener("deviceready",fn.init,false);
 	},
 	init: function(){   
-
+//window.localStorage.setItem("yamigrousuarios","")
         if(window.localStorage.getItem("yamigrousuarios") != "SI")
         {          
         fn.btnMigrarUsuarios();  
@@ -29,6 +29,7 @@ var fn = {
         $('#btnabortar').tap(fn.btnabortar);
         $('#ConsultarCUBOC').tap(fn.ConsultarCUBOC);
         $('#ConsultarAlmacenesXCUBO').tap(fn.ConsultarAlmacenesXCUBO);
+        $('#MARCAR').tap(fn.MARCAR);
         
         
 
@@ -104,7 +105,7 @@ window.location.href = '#login';
                             //alert("SS1");                  
                             if(msg[i].status != "P")
                             {
-                                //alert("El STATUS del cubo no es programado.");
+                                alert("El STATUS del cubo no es programado.");
                                 navigator.notification.alert("El STATUS del cubo no es programado, se aborta la operacion.",null,"Estatus del CUBO incorrecto.","Aceptar");                               
                             }
                             else
@@ -122,7 +123,7 @@ window.location.href = '#login';
                             }
                         else if(msg[i].Respuesta == "noencontro")
                             {
-                            //alert("No se encontro información del CUBO relacionada con el origen: " + origen);
+                            alert("No se encontro información del CUBO relacionada con el origen: " + origen);
                             navigator.notification.alert("No se encontro información del CUBO relacionada con el almacén fisico: " + origen,null,"No Existe en la Base de datos.","Aceptar");   
                             //alert("Usuario o contraseña incorrectos"); 
                             }                        
@@ -262,7 +263,79 @@ $("#btnCMARCAR_PK").text("");
              $("#hCDESCRIPCIONCUBO").text("");
              $("#btnCMARCAR_PK").text("");
              $("#txtcuboC").val("");
+    },
+    MARCAR: function(){
+
+        var cubo = $('#hFOLIOCUBO').text();  
+        var usuario = window.localStorage.getItem("user");
+        var origen = window.localStorage.getItem("origen");
+
+
+                $.mobile.loading("show",{theme: 'b'});
+                $.ajax({
+                method: 'POST',
+                url: 'http://servidoriis.laitaliana.com.mx/LM/wsitamarcarunidades/Service1.asmx/GuardaReporte',              
+                data: {cubo: cubo, usuario: usuario, origen: origen},
+                dataType: "json",
+                success: function (msg){
+                    $.mobile.loading("hide");
+                    $.each(msg,function(i,item){
+                       if(msg[i].Respuesta == "correcto")
+                            {       
+                            window.location.href = '#IngresoCubo';
+                                $("#hFOLIOCUBO").text("");
+                                $("#hORIGENUSUARIO").text("");
+                                $("#hNPROVEEDOR").text("");
+                                $("#hPLACA").text("");
+                                $("#hDESCRIPCIONCUBO").text("");
+                                $("#btnMARCAR_PK").text(""); 
+                                $("#txtcubo").val("");                                        
+                                //alert("Se registro de forma correcta.");
+                                navigator.notification.alert("Se registro de forma correcta.",null,"Listo","Aceptar");                                    
+                            }
+                            else if(msg[i].Respuesta == "yaseregistro")
+                            {    
+                            window.location.href = '#IngresoCubo';
+                                $("#hFOLIOCUBO").text("");
+                                $("#hORIGENUSUARIO").text("");
+                                $("#hNPROVEEDOR").text("");
+                                $("#hPLACA").text("");
+                                $("#hDESCRIPCIONCUBO").text("");
+                                $("#btnMARCAR_PK").text("");  
+                                $("#txtcubo").val("");                              
+                                //alert("Ya se tiene información de registro para este almacén.");
+                                navigator.notification.alert("Ya se tiene información de registro para este almacén.",null,"Listo","Aceptar");                               
+                            }
+                            else if(msg[i].Respuesta == "incorrecto")
+                            {                
+                            window.location.href = '#IngresoCubo';
+                                $("#hFOLIOCUBO").text("");
+                                $("#hORIGENUSUARIO").text("");
+                                $("#hNPROVEEDOR").text("");
+                                $("#hPLACA").text("");
+                                $("#hDESCRIPCIONCUBO").text("");
+                                $("#btnMARCAR_PK").text("");                                   
+                                $("#txtcubo").val("");                
+                                //alert("Sin información que registrar o actualziar verifique con sistemas.");
+                                navigator.notification.alert("Sin información que registrar o actualziar verifique con sistemas.",null,"Listo","Aceptar");
+                            }
+                                         
+                    }); 
+
+                                   
+        },
+        error: function(jq, txt){
+            //alert("Sin información que registrar o actualziar verifique con sistemas.");
+                    //alert(jq + txt.responseText);
+                    navigator.notification.alert("Error al intentar marcar verifique su cobertura ó contacte a sistemas" + jq + txt.responseText,null,"Error al migrar verifique su cobertura","Aceptar");
+                }
+            });
+                    //navigator.notification.alert("a guardar",null,"Error al Ingresar","Aceptar");    
+                            //almacen.guardarEXT(fn.id_ext, fn.ubicacion,fn.capacidad,fn.clase,fn.agente,fn.marca,fn.frecarga,fn.ffabricacion,fn.fproxservicio);
+                    
+                  
     }
+
 };
 //$(fn.init);
 $(fn.ready);
