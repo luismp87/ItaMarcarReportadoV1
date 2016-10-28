@@ -13,8 +13,8 @@
 		<author href="www.laitaliana.com.mx" email="luis_martinez@laitaliana.com.mx">
 			Pinky
 		</author>
-		<preference name="phonegap-version" value="3.7.0" />
-		  
+		<!--<preference name="phonegap-version" value="3.7.0" />-->
+		 <preference name="phonegap-version" value="cli-6.3.0" />
         <icon src="icon.png" />
 		
 

@@ -114,8 +114,8 @@ window.location.href = '#login';
                             if(msg[i].status != "P")
                             {
                                 //alert("El STATUS del cubo no es programado, se aborta la operacion."); ///*PARAWEB
-                                navigator.notification.alert("El STATUS del cubo no es programado, se aborta la operacion.",null,"Estatus del CUBO incorrecto.","Aceptar");///*PARAMOVIL
-                            }
+                                navigator.notification.alert("El STATUS del cubo no es programado, se aborta la operacion.",null,"Status del CUBO incorrecto.","Aceptar");///*PARAMOVIL
+                            }                            
                             else
                             {                 
                                 window.location.href = '#MuestraInfoCubo';
