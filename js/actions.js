@@ -4,10 +4,10 @@ var fn = {
 	},
 	init: function(){           
         //PARA MOVIL
-        if(window.localStorage.getItem("yamigrousuarios") != "SI")
-        {          
-        fn.btnMigrarUsuarios();  
-        }
+        //if(window.localStorage.getItem("yamigrousuarios") != "SI")
+        //{          
+        //fn.btnMigrarUsuarios();  
+        //}
         ////////////
  
         if(fn.estaRegistrado() == false)
@@ -21,10 +21,10 @@ var fn = {
         }
 		// LOGIO EN EL SERVIDOR --> $('#btnautentificar').tap(fn.autentificar);
         //PARA WEB
-        //$('#btnautentificar').tap(fn.autentificarJSON);
+        $('#btnautentificar').tap(fn.autentificarJSON);
         ////////////
         //PARA MOVIL
-        $('#btnautentificar').tap(fn.autentificarSQL);
+        //$('#btnautentificar').tap(fn.autentificarSQL);
         ////////////
         $('#CerrarSesion').tap(fn.cerrarsesion);
         $('#ConsultarCUBO').tap(fn.ConsultarCUBO);
@@ -39,7 +39,7 @@ var fn = {
         
 
         //PARA MOVIL
-        document.addEventListener("online", fn.btnMigrarUsuarios(), false);
+        //document.addEventListener("online", fn.btnMigrarUsuarios(), false);
         ////////////
  
 	},
@@ -68,8 +68,8 @@ var fn = {
     }
     if(encontrado == "false")
     {
-     //alert("Verifique el usuario y la contraseña"); ///*PARAWEB
-      navigator.notification.alert("Verifique el usuario y la contraseña",null,"Error al Ingresar","Aceptar");  ///*PARAMOVIL
+     alert("Verifique el usuario y la contraseña"); ///*PARAWEB
+     // navigator.notification.alert("Verifique el usuario y la contraseña",null,"Error al Ingresar","Aceptar");  ///*PARAMOVIL
     }
     //document.getElementById("id01").innerHTML = out;
     },
@@ -113,8 +113,8 @@ window.location.href = '#login';
                             //alert("SS1");                  
                             if(msg[i].status != "P")
                             {
-                                //alert("El STATUS del cubo no es programado, se aborta la operacion."); ///*PARAWEB
-                                navigator.notification.alert("El STATUS del cubo no es programado, se aborta la operacion.",null,"Status del CUBO incorrecto.","Aceptar");///*PARAMOVIL
+                                alert("El STATUS del cubo no es programado, se aborta la operacion."); ///*PARAWEB
+                                //navigator.notification.alert("El STATUS del cubo no es programado, se aborta la operacion.",null,"Status del CUBO incorrecto.","Aceptar");///*PARAMOVIL
                             }                            
                             else
                             {                 
@@ -131,21 +131,21 @@ window.location.href = '#login';
                             }
                         else if(msg[i].Respuesta == "noencontro")
                             {
-                            //alert("No se encontro información del CUBO relacionada con el almacén fisico: " + origen); ///*PARAWEB
-                            navigator.notification.alert("No se encontro información del CUBO relacionada con el almacén fisico: " + origen,null,"No Existe en la Base de datos.","Aceptar");///*PARAMOVIL
+                            alert("No se encontro información del CUBO relacionada con el almacén fisico: " + origen); ///*PARAWEB
+                            //navigator.notification.alert("No se encontro información del CUBO relacionada con el almacén fisico: " + origen,null,"No Existe en la Base de datos.","Aceptar");///*PARAMOVIL
                             }                        
                     });                 
                 },
                 error: function(jq, txt){
                     $.mobile.loading("hide");
-                    //alert("Verifique su conexion Celular ó Wifi " + jq + txt.responseText); ///*PARAWEB
-                    navigator.notification.alert("Verifique su conexion Celular ó Wifi " + jq + txt.responseText,null,"Error al consultar CUBO","Aceptar");///*PARAMOVIL
+                    alert("Verifique su conexion Celular ó Wifi " + jq + txt.responseText); ///*PARAWEB
+                    //navigator.notification.alert("Verifique su conexion Celular ó Wifi " + jq + txt.responseText,null,"Error al consultar CUBO","Aceptar");///*PARAMOVIL
                 }
             });
         }
         else{
-            navigator.notification.alert("El CUBO es Requeridos",null,"Error al consultar CUBO","Aceptar");///*PARAMOVIL
-            //alert("El CUBO es Requeridos");///*PARAWEB
+            //navigator.notification.alert("El CUBO es Requeridos",null,"Error al consultar CUBO","Aceptar");///*PARAMOVIL
+            alert("El CUBO es Requeridos");///*PARAWEB
         }  
     },
         ConsultarCUBOC: function(){    
@@ -181,22 +181,22 @@ window.location.href = '#login';
                             }
                         else if(msg[i].Respuesta == "noencontro")
                             {
-                            //alert("No se encontro información del CUBO en la base de datos.");///*PARAWEB
-                            navigator.notification.alert("No se encontro información del CUBO en la base de datos." ,null,"No Existe en la Base de datos.","Aceptar");///*PARAMOVIL
+                            alert("No se encontro información del CUBO en la base de datos.");///*PARAWEB
+                            //navigator.notification.alert("No se encontro información del CUBO en la base de datos." ,null,"No Existe en la Base de datos.","Aceptar");///*PARAMOVIL
 
                             }                        
                     });                 
                 },
                 error: function(jq, txt){
                     $.mobile.loading("hide");
-                    //alert("Verifique su conexion Celular ó Wifi " + jq + txt.responseText);///*PARAWEB
-                    navigator.notification.alert("Verifique su conexion Celular ó Wifi " + jq + txt.responseText,null,"Error al consultar CUBO","Aceptar");///*PARAMOVIL
+                    alert("Verifique su conexion Celular ó Wifi " + jq + txt.responseText);///*PARAWEB
+                    //navigator.notification.alert("Verifique su conexion Celular ó Wifi " + jq + txt.responseText,null,"Error al consultar CUBO","Aceptar");///*PARAMOVIL
                 }
             });
         }
         else{
-            navigator.notification.alert("El CUBO es Requeridos",null,"Error al consultar CUBO","Aceptar");///*PARAMOVIL
-            //alert("El CUBO es Requeridos");///*PARAWEB
+            //navigator.notification.alert("El CUBO es Requeridos",null,"Error al consultar CUBO","Aceptar");///*PARAMOVIL
+            alert("El CUBO es Requeridos");///*PARAWEB
         }  
     },
     ConsultaNumUsuarios: function(){      
@@ -228,8 +228,8 @@ window.location.href = '#login';
                     navigator.notification.alert("Migración Correcta de Usuarios",null,"Listo","Aceptar");               
         },
         error: function(jq, txt){
-                    //alert("Error al migrar los usuarios del servidor, cierre y vuelva a abrir la aplicación para reintentar actualizar ó verifique su cobertura" +jq + txt.responseText);///*PARAWEB
-                    navigator.notification.alert("Error al migrar los usuarios del servidor, cierre y vuelva a abrir la aplicación para reintentar actualizar ó verifique su cobertura" + jq + txt.responseText,null,"Error al migrar verifique su cobertura","Aceptar");///*PARAMOVIL
+                    alert("Error al migrar los usuarios del servidor, cierre y vuelva a abrir la aplicación para reintentar actualizar ó verifique su cobertura" +jq + txt.responseText);///*PARAWEB
+                    //navigator.notification.alert("Error al migrar los usuarios del servidor, cierre y vuelva a abrir la aplicación para reintentar actualizar ó verifique su cobertura" + jq + txt.responseText,null,"Error al migrar verifique su cobertura","Aceptar");///*PARAMOVIL
                 }
             });
                     //navigator.notification.alert("a guardar",null,"Error al Ingresar","Aceptar");    
@@ -238,8 +238,8 @@ window.location.href = '#login';
                     }
                     else
                     {
-                       //alert("Se tienen registros en la base de datos, antes eliminelos"); ///*PARAWEB
-                       navigator.notification.alert("Se tienen registros en la base de datos, antes eliminelos",null,"Advertencia","Aceptar");///*PARAMOVIL    
+                       alert("Se tienen registros en la base de datos, antes eliminelos"); ///*PARAWEB
+                       //navigator.notification.alert("Se tienen registros en la base de datos, antes eliminelos",null,"Advertencia","Aceptar");///*PARAMOVIL    
                     }
         }
     },
@@ -256,8 +256,8 @@ window.location.href = '#login';
             $.mobile.loading("hide");
         }
         else{
-            navigator.notification.alert("Ingrese los datos requeridos",null,"Error al Ingresar","Aceptar");///*PARAMOVIL
-            //alert("Ingrese los datos requeridos");///*PARAWEB
+            //navigator.notification.alert("Ingrese los datos requeridos",null,"Error al Ingresar","Aceptar");///*PARAMOVIL
+            alert("Ingrese los datos requeridos");///*PARAWEB
         }   
     },
     btnabortar: function(){
@@ -298,8 +298,8 @@ window.location.href = '#login';
                                 $("#hDESCRIPCIONCUBO").text("");
                                 $("#btnMARCAR_PK").text(""); 
                                 $("#txtcubo").val("");                                        
-                                //alert("Se registro de forma correcta.");///*PARAWEB
-                                navigator.notification.alert("Se registro de forma correcta.",null,"Listo","Aceptar");///*PARAMOVIL                                    
+                                alert("Se registro de forma correcta.");///*PARAWEB
+                                //navigator.notification.alert("Se registro de forma correcta.",null,"Listo","Aceptar");///*PARAMOVIL                                    
                             }
                             else if(msg[i].Respuesta == "yaseregistro")
                             {    
@@ -311,8 +311,8 @@ window.location.href = '#login';
                                 $("#hDESCRIPCIONCUBO").text("");
                                 $("#btnMARCAR_PK").text("");  
                                 $("#txtcubo").val("");                              
-                                //alert("Ya se tiene información de registro para este almacén.");///*PARAWEB
-                                navigator.notification.alert("Ya se tiene información de registro para este almacén.",null,"Listo","Aceptar");  ///*PARAMOVIL                            
+                                alert("Ya se tiene información de registro para este almacén.");///*PARAWEB
+                                //navigator.notification.alert("Ya se tiene información de registro para este almacén.",null,"Listo","Aceptar");  ///*PARAMOVIL                            
                             }
                             else if(msg[i].Respuesta == "incorrecto")
                             {                
@@ -324,8 +324,8 @@ window.location.href = '#login';
                                 $("#hDESCRIPCIONCUBO").text("");
                                 $("#btnMARCAR_PK").text("");                                   
                                 $("#txtcubo").val("");                
-                                //alert("Sin información que registrar o actualziar verifique con sistemas.");///*PARAWEB
-                                navigator.notification.alert("Sin información que registrar o actualziar verifique con sistemas.",null,"Listo","Aceptar");///*PARAMOVIL
+                                alert("Sin información que registrar o actualziar verifique con sistemas.");///*PARAWEB
+                                //navigator.notification.alert("Sin información que registrar o actualziar verifique con sistemas.",null,"Listo","Aceptar");///*PARAMOVIL
                             }
                                          
                     }); 
@@ -333,8 +333,8 @@ window.location.href = '#login';
                                    
         },
         error: function(jq, txt){           
-                    //alert("Error al intentar marcar verifique su cobertura ó contacte a sistemas"+jq + txt.responseText);
-                    navigator.notification.alert("Error al intentar marcar verifique su cobertura ó contacte a sistemas" + jq + txt.responseText,null,"Error al migrar verifique su cobertura","Aceptar");
+                    alert("Error al intentar marcar verifique su cobertura ó contacte a sistemas"+jq + txt.responseText);///*PARAWEB
+                    //navigator.notification.alert("Error al intentar marcar verifique su cobertura ó contacte a sistemas" + jq + txt.responseText,null,"Error al migrar verifique su cobertura","Aceptar");///*PARAMOVIL
                 }
             });
                     //navigator.notification.alert("a guardar",null,"Error al Ingresar","Aceptar");    
