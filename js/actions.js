@@ -215,9 +215,13 @@ window.location.href = '#login';
                 $.ajax({
                 method:'POST',
                 url:'http://servidoriis.laitaliana.com.mx/LM/wsitamarcarunidades/Service1.asmx/enviarcatalogocompletodeusuarios',              
+                async:true,
+                cache:false,
+                contentType:"application/json"
+                
                 //data: {usuario: nom, contrasena: passw},
-                //dataType:"json",
-                dataType:"text",
+                dataType:"json",
+                //dataType:"text",
                 success: function (msg){
                     alert.show("Hola");
                     /*$.mobile.loading("hide");
