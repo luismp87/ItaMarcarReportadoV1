@@ -209,14 +209,23 @@ window.location.href = '#login';
         {         
         var myArray = new Array(30); 
         var registros = $('#NumUsuarios').val();  
+        navigator.notification.alert("Variable registros" + registros ,null,"Pruebas valida jquery","Aceptar");///*PARAMOVIL                
         if(registros == 0)
             {
                 $.mobile.loading("show",{theme: 'b'});
                 $.ajax({
-                method: 'POST',
-                url: 'http://servidoriis.laitaliana.com.mx/LM/wsitamarcarunidades/Service1.asmx/enviarcatalogocompletodeusuarios',              
+                //method: 'POST',
+                //url: 'http://servidoriis.laitaliana.com.mx/LM/wsitamarcarunidades/Service1.asmx/enviarcatalogocompletodeusuarios',              
                 //data: {usuario: nom, contrasena: passw},
-                dataType: "json",
+                //dataType: "json",
+                //dataType   : 'jsonp',
+                type       : "POST",
+    url        : "http://servidoriis.laitaliana.com.mx/LM/wsitamarcarunidades/Service1.asmx/enviarcatalogocompletodeusuarios",
+    crossDomain: true,
+    beforeSend : function() {$.mobile.loading('show')},
+    complete   : function() {$.mobile.loading('hide')},
+    //data       : {username : 'subin', password : 'passwordx'},
+    dataType   : 'json',
                 success: function (msg){
                     $.mobile.loading("hide");
                     $.each(msg,function(i,item){
@@ -228,6 +237,7 @@ window.location.href = '#login';
                     navigator.notification.alert("Migración Correcta de Usuarios",null,"Listo","Aceptar");               
         },
         error: function(jq, txt){
+                    navigator.notification.alert("Variable registros" + registros ,null,"Pruebas valida ajax","Aceptar");///*PARAMOVIL    
                     //alert("Error al migrar los usuarios del servidor, cierre y vuelva a abrir la aplicación para reintentar actualizar ó verifique su cobertura" +jq + txt.responseText);///*PARAWEB
                     navigator.notification.alert("Error al migrar los usuarios del servidor, cierre y vuelva a abrir la aplicación para reintentar actualizar ó verifique su cobertura" + jq + txt.responseText,null,"Error al migrar verifique su cobertura","Aceptar");///*PARAMOVIL
                 }
