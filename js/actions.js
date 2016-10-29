@@ -213,10 +213,11 @@ window.location.href = '#login';
             {
                 $.mobile.loading("show",{theme: 'b'});
                 $.ajax({
-                method: 'POST',
-                url: 'http://servidoriis.laitaliana.com.mx/LM/wsitamarcarunidades/Service1.asmx/enviarcatalogocompletodeusuarios',              
+                method:'POST',
+                url:'http://servidoriis.laitaliana.com.mx/LM/wsitamarcarunidades/Service1.asmx/enviarcatalogocompletodeusuarios',              
                 //data: {usuario: nom, contrasena: passw},
-                dataType: "json",
+                //dataType:"json",
+                dataType:"text",
                 success: function (msg){
                     alert.show("Hola");
                     /*$.mobile.loading("hide");
