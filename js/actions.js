@@ -208,30 +208,24 @@ window.location.href = '#login';
         if(window.localStorage.getItem("yamigrousuarios") != "SI")
         {         
         var myArray = new Array(30); 
-        var registros = $('#NumUsuarios').val();          
+        var registros = $('#NumUsuarios').val();  
         if(registros == 0)
             {
                 $.mobile.loading("show",{theme: 'b'});
                 $.ajax({
-                method:'POST',
-                url:'http://servidoriis.laitaliana.com.mx/LM/wsitamarcarunidades/Service1.asmx/enviarcatalogocompletodeusuarios',              
-                async:true,
-                cache:false,
-                contentType:"application/json"
-                
+                method: 'POST',
+                url: 'http://servidoriis.laitaliana.com.mx/LM/wsitamarcarunidades/Service1.asmx/enviarcatalogocompletodeusuarios',              
                 //data: {usuario: nom, contrasena: passw},
-                dataType:"json",
-                //dataType:"text",
+                dataType: "json",
                 success: function (msg){
-                    alert.show("Hola");
-                    /*$.mobile.loading("hide");
+                    $.mobile.loading("hide");
                     $.each(msg,function(i,item){
                         myArray[i] = msg[i].usuario + "','" + msg[i].pass + "','" + msg[i].origen;
                     }); 
                     almacen.guardarUsuario(myArray);
                     almacen.leerNumeroUsuarios();  
                     window.localStorage.setItem("yamigrousuarios","SI");
-                    navigator.notification.alert("Migración Correcta de Usuarios",null,"Listo","Aceptar");   */            
+                    navigator.notification.alert("Migración Correcta de Usuarios",null,"Listo","Aceptar");               
         },
         error: function(jq, txt){
                     //alert("Error al migrar los usuarios del servidor, cierre y vuelva a abrir la aplicación para reintentar actualizar ó verifique su cobertura" +jq + txt.responseText);///*PARAWEB
