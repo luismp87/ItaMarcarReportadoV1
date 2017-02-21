@@ -26,6 +26,7 @@
 		<!--<gap:plugin name="org.apache.cordova.network-information" />-->
 		<gap:plugin name="cordova-plugin-whitelist" source="npm" />
 		<gap:plugin name="cordova-plugin-dialogs" source="npm" />
+		<gap:plugin name="cordova-plugin-vibration" source="npm" />
 	    <access origin="*" />
         <allow-intent href="*" />
         <allow-navigation href="*" />
