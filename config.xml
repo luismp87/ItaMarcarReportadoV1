@@ -19,7 +19,7 @@
 		
 
 		<preference name="orientation" value="portrait"></preference>		
-		<gap:plugin name="org.apache.cordova.dialogs"></gap:plugin>
+		<gap:plugin name="org.apache.cordova.dialogs" spec="0.2.6" source="pgb"></gap:plugin>		
 		<!--<gap:plugin name="org.apache.cordova.vibration"></gap:plugin>-->
 		<!--<gap:plugin name="org.apache.cordova.device"></gap:plugin>-->
 		<!--<gap:plugin name="com.phonegap.plugins.barcodescanner"></gap:plugin>-->
