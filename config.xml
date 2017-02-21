@@ -24,5 +24,8 @@
 		<gap:plugin name="org.apache.cordova.device"></gap:plugin>
 		<!--<gap:plugin name="com.phonegap.plugins.barcodescanner"></gap:plugin>-->
 		<gap:plugin name="org.apache.cordova.network-information" />
-		
+		<gap:plugin name="cordova-plugin-whitelist" source="npm" />
+	    <access origin="*" />
+        <allow-intent href="*" />
+        <allow-navigation href="*" />
 	</widget>
