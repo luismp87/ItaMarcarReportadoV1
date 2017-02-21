@@ -14,14 +14,14 @@
 			Pinky
 		</author>
 		<!--<preference name="phonegap-version" value="3.7.0" />-->
-		 <preference name="phonegap-version" value="cli-6.3.0" />
+		 <preference name="phonegap-version" value="cli-6.5.0" />
         <icon src="icon.png" />
 		
 
 		<preference name="orientation" value="portrait"></preference>		
-		<gap:plugin name="org.apache.cordova.dialogs"></gap:plugin>
-		<gap:plugin name="org.apache.cordova.vibration"></gap:plugin>
-		<gap:plugin name="org.apache.cordova.device"></gap:plugin>
+		<gap:plugin name="cordova-plugin-dialogs"></gap:plugin>
+		<!--<gap:plugin name="org.apache.cordova.vibration"></gap:plugin>-->
+		<!--<gap:plugin name="org.apache.cordova.device"></gap:plugin>-->
 		<!--<gap:plugin name="com.phonegap.plugins.barcodescanner"></gap:plugin>-->
 		<gap:plugin name="org.apache.cordova.network-information" />
 		<gap:plugin name="cordova-plugin-whitelist" source="npm" />

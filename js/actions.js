@@ -19,7 +19,7 @@ var fn = {
         $("#lblorigenactual").text("Tu Ubicación: " + window.localStorage.getItem("origen"));
         window.location.href = '#IngresoCubo';     
         }
-		// LOGIO EN EL SERVIDOR --> $('#btnautentificar').tap(fn.autentificar);
+		// LOGEO EN EL SERVIDOR --> $('#btnautentificar').tap(fn.autentificar);
         //PARA WEB
         //$('#btnautentificar').tap(fn.autentificarJSON);
         ////////////
